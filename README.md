@@ -281,7 +281,7 @@ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:
     	c = tf.matmul(a, b)
 
     with tf.Session() as sess:
-   	print(sess.run(c))
+   	     print(sess.run(c))
 
 
 ## All works? Congratulations!  You have now successfully installed tensorflow 1.15 GPU on your machine. 
