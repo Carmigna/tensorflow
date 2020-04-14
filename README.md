@@ -91,8 +91,8 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 10.2, cuDNN 7.6.5 with 
 
 ## You can check your cuda installation using following sample:
 
-	cuda-install-samples-10.0.sh ~
-	cd ~/NVIDIA_CUDA-10.0_Samples/5_Simulations/nbody
+	cuda-install-samples-10.2.sh ~
+	cd ~/NVIDIA_CUDA-10.2_Samples/5_Simulations/nbody
 	make
 	./nbody
 
