@@ -116,7 +116,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with mo
 
 ### (Next step is not essential since it can be defaulted in the Build later to NCCL1.3) 
 ### Do the same for NCCL: NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. Get nccl_###+cuda11.0_x86_64.txz
-	tar -xf nccl_###-#+cuda10.2_x86_64.txz
+	tar -xf nccl_###-#+cuda11.0_x86_64.txz
 	cd nccl_###-#+cuda11.0_x86_64
 	sudo cp -R * /usr/local/cuda-11.0/targets/x86_64-linux/
 	sudo ldconfig
@@ -139,11 +139,11 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with mo
 
 ## Do these tweaks to avoid getting errors in the bazel Build: {{don't take these for granted...and follow the pattern for other errors that might appear later due to missing library files!!!}}
 	cd 
-	cd  /usr/local/cuda-10.2/lib64
-	sudo ln -s -T /usr/lib/x86_64-linux-gnu/libcublas.so.10.2.2.89 libcublas.so.10.2
-	sudo ln -s -T libcusolver.so.10.3.0.89 libcusolver.so.10.2
-	sudo ln -s -T libcurand.so.10.1.2.89 libcurand.so.10.2
-	sudo ln -s -T libcufft.so.10.1.2.89 libcufft.so.10.2
+	cd  /usr/local/cuda-11.0/lib64
+	sudo ln -s -T /usr/lib/x86_64-linux-gnu/libcublas.so.11.x.x.x libcublas.so.11.0
+	sudo ln -s -T libcusolver.so.11.x.x.x libcusolver.so.11.0
+	sudo ln -s -T libcurand.so.11.x.x.x libcurand.so.11.0
+	sudo ln -s -T libcufft.so.11.x.x.x libcufft.so.11.0
 
 ## In case you decided not to install NCCL do:
 	cd ../
