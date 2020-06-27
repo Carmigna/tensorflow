@@ -197,11 +197,11 @@ Do you wish to build TensorFlow with ROCm support? [y/N]: N
 
 Do you wish to build TensorFlow with CUDA support? [y/N]: Y
 
-Please specify the CUDA SDK version you want to use. [Leave empty to default to CUDA 9.0]: 10.2
+Please specify the CUDA SDK version you want to use. [Leave empty to default to CUDA 9.0]: 11.0
 
 Please specify the location where CUDA 10.2 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: /usr/local/cuda
 
-Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7]: 7.6.5
+Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7]: 8.0.1
 
 Please specify the location where cuDNN 7 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda-10.0]: /usr/local/cuda
 
