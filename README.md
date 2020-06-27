@@ -1,6 +1,6 @@
 # tensorflow
-How to install Tensorflow 1.15 GPU from SOURCE with CUDA 10.2, cuDNN 7.6.5 with most recent nvidia driver for python on Ubuntu 18.04 LTS
-### This is going to be a tutorial on how to install tensorflow 1.15 GPU version. We will also be installing CUDA 10.2 and cuDNN 7.6.5 along with tensorflow 1.15.
+How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 7.6.5 with most recent nvidia driver for python on Ubuntu 18.04 LTS
+### This is going to be a tutorial on how to install tensorflow 1.15 GPU version. We will also be installing CUDA 11 and cuDNN 7.6.5 along with tensorflow 1.15.
 ### In order to use the GPU version of TensorFlow, you will need an NVIDIA GPU with a compute capability > 3.0. Check the GPU consistency with the latest nvidia driver as well.
 
 # Step 1: Update and Upgrade your system:
@@ -30,7 +30,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 10.2, cuDNN 7.6.5 with 
 
 	sudo apt-get install linux-headers-$(uname -r)
 
-# Step 6: Install NVIDIA CUDA 10.2:
+# Step 6: Install NVIDIA CUDA 11:
 
 	sudo apt install build-essential gcc-6 g++-6
 	sudo update-alternatives --remove-all gcc
@@ -50,7 +50,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 10.2, cuDNN 7.6.5 with 
 	sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 	echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" | sudo tee /etc/ap/sources.list.d/cuda.list
 	sudo apt-get update 
-	sudo apt-get -o Dpkg::Options::="--force-overwrite" install cuda-10-2 cuda-drivers
+	sudo apt-get -o Dpkg::Options::="--force-overwrite" install cuda-11-0 cuda-drivers
 ## or
 	wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
 	sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -64,7 +64,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 10.2, cuDNN 7.6.5 with 
 
 ## set system wide paths
 	echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/cuda/bin"' | sudo tee /etc/environment
-	echo /usr/local/cuda-10.2/lib64 | sudo tee /etc/ld.so.conf.d/cuda-10.2.conf
+	echo /usr/local/cuda-11.0/lib64 | sudo tee /etc/ld.so.conf.d/cuda-11.0.conf
 	sudo ldconfig
 
 # Step 7: Reboot the system to load the NVIDIA drivers.
@@ -73,16 +73,16 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 10.2, cuDNN 7.6.5 with 
 
 # Step 8: Go to terminal and type:
 
-	echo 'export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
-	echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+	echo 'export PATH=/usr/local/cuda-11.0/bin${PATH:+:${PATH}}' >> ~/.bashrc
+	echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
 
 ## test your graphics OKAY for nvidia FAIL for nouveau:
 	lsmod | grep nouv && echo FAIL || echo OKAY
 	lsmod | grep nvid && echo OKAY || echo FAIL
-	grep -E 'NVIDIA.*440.[0-9]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
-	nvcc -V | grep -E "V10.2.[0-9]+" &>/dev/null && echo OKAY || echo FAIL
+	grep -E 'NVIDIA.*450.[0-9]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
+	nvcc -V | grep -E "V11.0.[0-9]+" &>/dev/null && echo OKAY || echo FAIL
 
 ## this should return stats for all installed cards
     nvidia-smi
@@ -91,8 +91,8 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 10.2, cuDNN 7.6.5 with 
 
 ## You can check your cuda installation using following sample:
 
-	cuda-install-samples-10.2.sh ~
-	cd ~/NVIDIA_CUDA-10.2_Samples/5_Simulations/nbody
+	cuda-install-samples-11.0.sh ~
+	cd ~/NVIDIA_CUDA-11.0_Samples/5_Simulations/nbody
 	make
 	./nbody
 
