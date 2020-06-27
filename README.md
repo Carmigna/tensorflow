@@ -103,7 +103,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with mo
 
 
  ### Go to: NVIDIA cuDNN home page. https://developer.nvidia.com/cudnn
- ### Click Download. get cudnn-10.2-linux-x64-v7.6.5.32.tgz
+ ### Click Download. get cudnn-11.0-linux-x64-v8.0.1.13.tgz
  ### Complete the short survey and click Submit.
  ### Accept the Terms and Conditions. A list of available download versions of cuDNN displays.
  ### Select the cuDNN version you want to install. A list of available resources displays.
@@ -115,10 +115,10 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with mo
 	sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 
 ### (Next step is not essential since it can be defaulted in the Build later to NCCL1.3) 
-### Do the same for NCCL: NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. Get nccl_###+cuda10.2_x86_64.txz
+### Do the same for NCCL: NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. Get nccl_###+cuda11.0_x86_64.txz
 	tar -xf nccl_###-#+cuda10.2_x86_64.txz
-	cd nccl_###-#+cuda10.2_x86_64
-	sudo cp -R * /usr/local/cuda-10.2/targets/x86_64-linux/
+	cd nccl_###-#+cuda11.0_x86_64
+	sudo cp -R * /usr/local/cuda-11.0/targets/x86_64-linux/
 	sudo ldconfig
 
 # Step 10: Install Dependencies:
