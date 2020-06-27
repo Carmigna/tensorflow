@@ -1,6 +1,6 @@
 # tensorflow
-How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 7.6.5 with most recent nvidia driver for python on Ubuntu 18.04 LTS
-### This is going to be a tutorial on how to install tensorflow 1.15 GPU version. We will also be installing CUDA 11 and cuDNN 7.6.5 along with tensorflow 1.15.
+How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with most recent nvidia driver for python on Ubuntu 18.04 LTS
+### This is going to be a tutorial on how to install tensorflow 1.15 GPU version. We will also be installing CUDA 11 and cuDNN 8.0.1 along with tensorflow 1.15.
 ### In order to use the GPU version of TensorFlow, you will need an NVIDIA GPU with a compute capability > 3.0. Check the GPU consistency with the latest nvidia driver as well.
 
 # Step 1: Update and Upgrade your system:
@@ -99,7 +99,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 7.6.5 with mo
 ## Quite COOL right!!! try the other simulations also, it makes you appreciate your NVIDIA GPU if you're not into Vgames.
 ## Now let's get down to business...
 
-# Step 9: Install cuDNN 7.6.5:
+# Step 9: Install cuDNN 8.0.1:
 
 
  ### Go to: NVIDIA cuDNN home page. https://developer.nvidia.com/cudnn
@@ -109,7 +109,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 7.6.5 with mo
  ### Select the cuDNN version you want to install. A list of available resources displays.
 
 ## Go to downloaded folder and in terminal perform following:
-	tar -xzvf cudnn-10.2-linux-x64-v7.6.5.32.tgz
+	tar -xzvf cudnn-11.0-linux-x64-v8.0.1.13.tgz
 	sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 	sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 	sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
