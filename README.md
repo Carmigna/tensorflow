@@ -32,15 +32,15 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with mo
 
 # Step 6: Install NVIDIA CUDA 11:
 
-	sudo apt install build-essential gcc-6 g++-6
+	sudo apt install build-essential gcc-7 g++-7
 	sudo update-alternatives --remove-all gcc
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 10
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 20
-	sudo update-alternatives --set gcc /usr/bin/gcc-6
+	sudo update-alternatives --set gcc /usr/bin/gcc-7
 	sudo update-alternatives --remove-all g++
 	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 10
 	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 20
-	sudo update-alternatives --set g++ /usr/bin/g++-6
+	sudo update-alternatives --set g++ /usr/bin/g++-7
 
 	sudo apt-get purge nvidia*
 	sudo apt-get autoremove
