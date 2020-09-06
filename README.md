@@ -206,8 +206,6 @@ Please specify the location where cuDNN 7 library is installed. Refer to README.
 Do you wish to build TensorFlow with TensorRT support? [y/N]: N
 Please specify the locally installed NCCL version you want to use. [Leave empty to use http://github.com/nvidia/nccl]: /usr/local/cuda/include,/usr/local/cuda/lib64,/usr/local/cuda/bin
 
-Please specify the NCCL version you want to use. If NCCL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]: 1.3 
-## (if you are lazy like me and didn't install a version of NCCL)
 
 ## Now we need compute capability which we have noted at step 1 eg. 5.0 check Nvidia website for GPU compute capabilities.
 
