@@ -1,6 +1,6 @@
 # tensorflow
-How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with most recent nvidia driver for python on Ubuntu 18.04 LTS
-### This is going to be a tutorial on how to install tensorflow 1.15 GPU version. We will also be installing CUDA 11 and cuDNN 8.0.1 along with tensorflow 1.15.
+How to install Tensorflow 2.3 from SOURCE with CUDA 11, cuDNN 8.0.1 with most recent nvidia driver for python on Ubuntu 18.04 LTS
+### This is going to be a tutorial on how to install tensorflow 2.3 GPU version. We will also be installing CUDA 11 and cuDNN 8.0.1 along with tensorflow 2.3.
 ### In order to use the GPU version of TensorFlow, you will need an NVIDIA GPU with a compute capability > 3.0. Check the GPU consistency with the latest nvidia driver as well.
 
 # Step 1: Update and Upgrade your system:
@@ -140,25 +140,23 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with mo
 ## Do these tweaks to avoid getting errors in the bazel Build: {{don't take these for granted...and follow the pattern for other errors that might appear later due to missing library files!!!}}
 	cd 
 	cd  /usr/local/cuda-11.0/lib64
-	sudo ln -s -T /usr/lib/x86_64-linux-gnu/libcublas.so.11.x.x.x libcublas.so.11.0
-	sudo ln -s -T libcusolver.so.11.x.x.x libcusolver.so.11.0
-	sudo ln -s -T libcurand.so.11.x.x.x libcurand.so.11.0
-	sudo ln -s -T libcufft.so.11.x.x.x libcufft.so.11.0
+	sudo ln -s -T libcublas.so.11.2.0.252 libcublas.so.11.0
+	sudo ln -s -T libcusolver.so.10.6.0.245 libcusolver.so.11.0
+	sudo ln -s -T libcurand.so.10.2.1.245 libcurand.so.11.0
+	sudo ln -s -T libcufft.so.10.2.1.245 libcufft.so.11.0
 
-## In case you decided not to install NCCL do:
-	cd ../
-	cd targets/x86_64-linux/include/
-	sudo cp  /usr/include/cublas_v2.h .
-## same for any similar c++ file missing. 
+
+## copy any c++ .h file missing to /usr/local/cuda-11.0/targets/x86_64-linux/include 
 
 
 # Step 12: Configure Tensorflow from source:
 
 ## Download bazel:
 	cd ~/
-	wget https://github.com/bazelbuild/bazel/releases/download/0.24.1/bazel-0.24.1-installer-linux-x86_64.sh
-	chmod +x bazel-0.24.1-installer-linux-x86_64.sh
-	./bazel-0.24.1-installer-linux-x86_64.sh --user
+	wget https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-installer-linux-x86_64.sh
+
+	chmod +x bazel-3.1.0-installer-linux-x86_64.sh
+	./bazel-3.1.0-installer-linux-x86_64.sh --user
 	echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc
 
 ## Reload environment variables
@@ -169,7 +167,7 @@ How to install Tensorflow 1.15 GPU from SOURCE with CUDA 11, cuDNN 8.0.1 with mo
 	cd ~/
 	git clone https://github.com/tensorflow/tensorflow.git
 	cd tensorflow
-	git checkout r1.15
+	git checkout r2.3
 
 ## One last TWEAK!!! 
 ## remove the line 
@@ -206,6 +204,7 @@ Please specify the cuDNN version you want to use. [Leave empty to default to cuD
 Please specify the location where cuDNN 7 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda-10.0]: /usr/local/cuda
 
 Do you wish to build TensorFlow with TensorRT support? [y/N]: N
+Please specify the locally installed NCCL version you want to use. [Leave empty to use http://github.com/nvidia/nccl]: /usr/local/cuda/include,/usr/local/cuda/lib64,/usr/local/cuda/bin
 
 Please specify the NCCL version you want to use. If NCCL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]: 1.3 
 ## (if you are lazy like me and didn't install a version of NCCL)
@@ -232,7 +231,7 @@ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:
 # Step 13: Build Tensorflow using bazel:
 
 ## To build a pip package for TensorFlow you would typically invoke the following command:
-	bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+ 	bazel build --config=opt --config=cuda --config=v2 --config=nonccl //tensorflow/tools/pip_package:build_pip_package
 
 ## Note:-
 
@@ -283,7 +282,7 @@ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:
     	print(sess.run(c))
 
 
-## All works? Congratulations!  You have now successfully installed tensorflow 1.15 GPU on your machine. 
+## All works? Congratulations!  You have now successfully installed tensorflow 2.3 GPU on your machine. 
 
 ## References
 	https://www.pytorials.com/how-to-install-tensorflow-gpu-with-cuda-10-0-for-python-on-ubuntu/
