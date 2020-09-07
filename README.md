@@ -1,6 +1,6 @@
 # tensorflow
-How to install Tensorflow 2.3 from SOURCE with CUDA 11, cuDNN 8.0.1 with most recent nvidia driver for python on Ubuntu 18.04 LTS
-### This is going to be a tutorial on how to install tensorflow 2.3 GPU version. We will also be installing CUDA 11 and cuDNN 8.0.1 along with tensorflow 2.3.
+How to install Tensorflow 1.15 from SOURCE with CUDA 11, cuDNN 8.0.1 with most recent nvidia driver for python on Ubuntu 18.04 LTS
+### This is going to be a tutorial on how to install tensorflow 1.15 GPU version. We will also be installing CUDA 11 and cuDNN 8.0.1 along with tensorflow 1.15.
 ### In order to use the GPU version of TensorFlow, you will need an NVIDIA GPU with a compute capability > 3.0. Check the GPU consistency with the latest nvidia driver as well.
 
 # Step 1: Update and Upgrade your system:
@@ -153,10 +153,10 @@ How to install Tensorflow 2.3 from SOURCE with CUDA 11, cuDNN 8.0.1 with most re
 
 ## Download bazel:
 	cd ~/
-	wget https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-installer-linux-x86_64.sh
+	wget https://github.com/bazelbuild/bazel/releases/download/0.26.1/bazel-0.26.1-installer-linux-x86_64.sh
 
-	chmod +x bazel-3.1.0-installer-linux-x86_64.sh
-	./bazel-3.1.0-installer-linux-x86_64.sh --user
+	chmod +x bazel-0.26.1-installer-linux-x86_64.sh
+	./bazel-0.26.1-installer-linux-x86_64.sh --user
 	echo 'export PATH="$PATH:$HOME/bin"' >> ~/.bashrc
 
 ## Reload environment variables
@@ -167,7 +167,7 @@ How to install Tensorflow 2.3 from SOURCE with CUDA 11, cuDNN 8.0.1 with most re
 	cd ~/
 	git clone https://github.com/tensorflow/tensorflow.git
 	cd tensorflow
-	git checkout r2.3
+	git checkout r1.15
 
 ## One last TWEAK!!! 
 ## remove the line 
