@@ -1,5 +1,5 @@
 # tensorflow
-How to install Tensorflow 1.15 from SOURCE with CUDA 11, cuDNN 8.0.1 with most recent nvidia driver for python on Ubuntu 18.04 LTS
+How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nvidia driver for python on Ubuntu 18.04 LTS
 ### This is going to be a tutorial on how to install tensorflow 1.15 GPU version. We will also be installing CUDA 11 and cuDNN 8.0.1 along with tensorflow 1.15.
 ### In order to use the GPU version of TensorFlow, you will need an NVIDIA GPU with a compute capability > 3.0. Check the GPU consistency with the latest nvidia driver as well.
 
@@ -149,9 +149,9 @@ How to install Tensorflow 1.15 from SOURCE with CUDA 11, cuDNN 8.0.1 with most r
 ## copy any c++ .h file missing to /usr/local/cuda-11.0/targets/x86_64-linux/include 
 
 
-# Step 12: Configure Tensorflow from source:
+# Step 12: Configure Tensorflow from source: (Recently added "pip3 install tensorflow-gpu==1.15" so step 12 & 13 are completely optional)
 
-## Download bazel:
+## Download bazel: 
 	cd ~/
 	wget https://github.com/bazelbuild/bazel/releases/download/0.26.1/bazel-0.26.1-installer-linux-x86_64.sh
 
@@ -226,7 +226,7 @@ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:
 ## VOILA!!!  Configuration finished, now to the best part...
 
 
-# Step 13: Build Tensorflow using bazel:
+# Step 13: Build Tensorflow using bazel: 
 
 ## To build a pip package for TensorFlow you would typically invoke the following command:
  	bazel build --config=opt --config=cuda --config=v2 --config=nonccl //tensorflow/tools/pip_package:build_pip_package
@@ -280,7 +280,7 @@ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:
     	print(sess.run(c))
 
 
-## All works? Congratulations!  You have now successfully installed tensorflow 2.3 GPU on your machine. 
+## All works? Congratulations!  You have now successfully installed tensorflow 1.15 GPU on your machine. 
 
 ## References
 	https://www.pytorials.com/how-to-install-tensorflow-gpu-with-cuda-10-0-for-python-on-ubuntu/
