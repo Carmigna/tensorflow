@@ -46,13 +46,12 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 	sudo apt-get autoremove
 	sudo apt-get autoclean
 	sudo rm -rf /usr/local/cuda*
-	wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
-	sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
-	wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda-repo-ubuntu1804-11-1-local_11.1.0-455.23.05-1_amd64.deb
-	sudo dpkg -i cuda-repo-ubuntu1804-11-1-local_11.1.0-455.23.05-1_amd64.deb
-	sudo apt-key add /var/cuda-repo-ubuntu1804-11-1-local/7fa2af80.pub
-	sudo apt-get update
-	sudo apt-get -y install cuda nvidia-driver
+	
+	sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+	echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" | sudo tee /etc/ap/sources.list.d/cuda.list
+	sudo apt-get update 
+	sudo apt-get -o Dpkg::Options::="--force-overwrite" install cuda-11-0 cuda-drivers-450
+
 
 
 	sudo modprobe -r nouveau
@@ -60,7 +59,7 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 ## set system wide paths
 	echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/cuda/bin"' | sudo tee /etc/environment
-	echo /usr/local/cuda-11.1/lib64 | sudo tee /etc/ld.so.conf.d/cuda-11.1.conf
+	echo /usr/local/cuda-11.0/lib64 | sudo tee /etc/ld.so.conf.d/cuda-11.0.conf
 	sudo ldconfig
 
 # Step 7: Reboot the system to load the NVIDIA drivers.
@@ -69,16 +68,16 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 # Step 8: Go to terminal and type:
 
-	echo 'export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}' >> ~/.bashrc
-	echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+	echo 'export PATH=/usr/local/cuda-11.0/bin${PATH:+:${PATH}}' >> ~/.bashrc
+	echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
 
 ## test your graphics OKAY for nvidia FAIL for nouveau:
 	lsmod | grep nouv && echo FAIL || echo OKAY
 	lsmod | grep nvid && echo OKAY || echo FAIL
-	grep -E 'NVIDIA.*455.[20-29]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
-	nvcc -V | grep -E "V11.1.[0-9]+" &>/dev/null && echo OKAY || echo FAIL
+	grep -E 'NVIDIA.*450.[0-9]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
+	nvcc -V | grep -E "V11.0.[0-9]+" &>/dev/null && echo OKAY || echo FAIL
 
 ## this should return stats for all installed cards
     nvidia-smi
