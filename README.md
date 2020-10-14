@@ -163,7 +163,7 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 	git checkout r1.15
 
 ## One last TWEAK!!! 
-## remove the line 
+## remove the line(if needed and exist!) 
 	"--bin2c-path=%s" % bin2c.dirname, 
 ## from the file third_party/nccl/build_defs.bzl.tpl
 
