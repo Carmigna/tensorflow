@@ -52,7 +52,7 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 	sudo dpkg -i cuda-repo-ubuntu1804-11-1-local_11.1.0-455.23.05-1_amd64.deb
 	sudo apt-key add /var/cuda-repo-ubuntu1804-11-1-local/7fa2af80.pub
 	sudo apt-get update
-	sudo apt-get -y install cuda
+	sudo apt-get -y install cuda nvidia-driver
 
 
 	sudo modprobe -r nouveau
