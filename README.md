@@ -106,9 +106,9 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 ## Go to downloaded folder and in terminal perform following:
 	tar -xzvf cudnn-11.0-linux-x64-v8.0.1.13.tgz
-	sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+	sudo cp cuda/include/cudnn* /usr/local/cuda/include
 	sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
-	sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+	sudo chmod a+r /usr/local/cuda/include/cudnn* /usr/local/cuda/lib64/libcudnn*
 
 ### (Next step is not essential since it can be defaulted in the Build later to NCCL1.3) 
 ### Do the same for NCCL: NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. Get nccl_###+cuda11.0_x86_64.txz
