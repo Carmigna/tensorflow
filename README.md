@@ -47,17 +47,13 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 	sudo apt-get autoclean
 	sudo rm -rf /usr/local/cuda*
 
-	sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
-	echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" | sudo tee /etc/ap/sources.list.d/cuda.list
-	sudo apt-get update 
-	sudo apt-get -o Dpkg::Options::="--force-overwrite" install cuda-11-0 cuda-drivers
-## or
-	wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+        wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
 	sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
-	sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
-	sudo add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
-	sudo apt-get update
-	sudo apt-get -y install cuda
+	wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda-repo-ubuntu1804-11-1-local_11.1.0-455.23.05-1_amd64.deb
+	sudo dpkg -i cuda-repo-ubuntu1804-11-1-local_11.1.0-455.23.05-1_amd64.deb
+	sudo apt-key add /var/cuda-repo-ubuntu1804-11-1-local/7fa2af80.pub
+	sudo apt-get updatesudo apt-get -y install cuda
+
 
 	sudo modprobe -r nouveau
 	sudo modprobe -i nvidia
