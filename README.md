@@ -96,13 +96,13 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 
  ### Go to: NVIDIA cuDNN home page. https://developer.nvidia.com/cudnn
- ### Click Download. get cudnn-11.0-linux-x64-v8.0.1.13.tgz
+ ### Click Download. get cudnn-11.1-linux-x64-v8.0.4.30.tgz
  ### Complete the short survey and click Submit.
  ### Accept the Terms and Conditions. A list of available download versions of cuDNN displays.
  ### Select the cuDNN version you want to install. A list of available resources displays.
 
 ## Go to downloaded folder and in terminal perform following:
-	tar -xzvf cudnn-11.0-linux-x64-v8.0.1.13.tgz
+	tar -xzvf cudnn-11.1-linux-x64-v8.0.4.30.tgz
 	sudo cp cuda/include/cudnn* /usr/local/cuda/include
 	sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 	sudo chmod a+r /usr/local/cuda/include/cudnn* /usr/local/cuda/lib64/libcudnn*
@@ -128,11 +128,11 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 ## If in an active venv 'pip' is enough.
 
-# Step 11: Tweaks:
+# Step 11: Tweaks (if needed!!!):
 
 ## Do these tweaks to avoid getting errors in the bazel Build: {{don't take these for granted...and follow the pattern for other errors that might appear later due to missing library files!!!}}
 	cd 
-	cd  /usr/local/cuda-11.0/lib64
+	cd  /usr/local/cuda-11.1/lib64
 	sudo ln -s -T libcublas.so.11.2.0.252 libcublas.so.11.0
 	sudo ln -s -T libcusolver.so.10.6.0.245 libcusolver.so.11.0
 	sudo ln -s -T libcurand.so.10.2.1.245 libcurand.so.11.0
