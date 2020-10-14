@@ -32,15 +32,13 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 # Step 6: Install NVIDIA CUDA 11:
 
-	sudo apt install build-essential gcc-7 g++-7
+	sudo apt install build-essential gcc-8 g++-8
 	sudo update-alternatives --remove-all gcc
-	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 10
-	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 20
-	sudo update-alternatives --set gcc /usr/bin/gcc-7
+	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 1
+	sudo update-alternatives --set gcc /usr/bin/gcc-8
 	sudo update-alternatives --remove-all g++
-	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 10
-	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 20
-	sudo update-alternatives --set g++ /usr/bin/g++-7
+	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 1
+	sudo update-alternatives --set g++ /usr/bin/g++-8
 
 	sudo apt-get purge nvidia*
 	sudo apt-get autoremove
@@ -59,7 +57,7 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 ## set system wide paths
 	echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/cuda/bin"' | sudo tee /etc/environment
-	echo /usr/local/cuda-11.0/lib64 | sudo tee /etc/ld.so.conf.d/cuda-11.0.conf
+	echo /usr/local/cuda-11.1/lib64 | sudo tee /etc/ld.so.conf.d/cuda-11.1.conf
 	sudo ldconfig
 
 # Step 7: Reboot the system to load the NVIDIA drivers.
@@ -68,16 +66,16 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 # Step 8: Go to terminal and type:
 
-	echo 'export PATH=/usr/local/cuda-11.0/bin${PATH:+:${PATH}}' >> ~/.bashrc
-	echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+	echo 'export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}' >> ~/.bashrc
+	echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
 
 ## test your graphics OKAY for nvidia FAIL for nouveau:
 	lsmod | grep nouv && echo FAIL || echo OKAY
 	lsmod | grep nvid && echo OKAY || echo FAIL
-	grep -E 'NVIDIA.*450.[0-9]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
-	nvcc -V | grep -E "V11.0.[0-9]+" &>/dev/null && echo OKAY || echo FAIL
+	grep -E 'NVIDIA.*455.[20-29]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
+	nvcc -V | grep -E "V11.1.[0-9]+" &>/dev/null && echo OKAY || echo FAIL
 
 ## this should return stats for all installed cards
     nvidia-smi
