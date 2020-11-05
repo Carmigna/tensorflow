@@ -106,6 +106,25 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 	sudo cp cuda/include/cudnn* /usr/local/cuda/include
 	sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 	sudo chmod a+r /usr/local/cuda/include/cudnn* /usr/local/cuda/lib64/libcudnn*
+## Then go to /usr/local/cuda/lib64 and fix the symbolic links by doing
+        sudo rm libcudnn*.so
+        sudo rm libcudnn*.so.8
+        sudo ln libcudnn.so.8.0.4 libcudnn.so.8
+	sudo ln libcudnn_adv_infer.so.8.0.4 libcudnn_adv_infer.so.8
+	sudo ln libcudnn_adv_train.so.8.0.4 libcudnn_adv_train.so.8
+	sudo ln libcudnn_cnn_train.so.8.0.4 libcudnn_cnn_train.so.8
+	sudo ln libcudnn_cnn_infer.so.8.0.4 libcudnn_cnn_infer.so.8
+	sudo ln libcudnn_ops_infer.so.8.0.4 libcudnn_ops_infer.so.8
+	sudo ln libcudnn_ops_train.so.8.0.4 libcudnn_ops_train.so.8
+	sudo ln libcudnn.so.8 libcudnn.so
+	sudo ln libcudnn_adv_infer.so.8 libcudnn_adv_infer.so
+	sudo ln libcudnn_adv_train.so.8 libcudnn_adv_train.so
+	sudo ln libcudnn_cnn_train.so.8 libcudnn_cnn_train.so
+	sudo ln libcudnn_cnn_infer.so.8 libcudnn_cnn_infer.so
+	sudo ln libcudnn_ops_infer.so.8 libcudnn_ops_infer.so
+	sudo ln libcudnn_ops_train.so.8 libcudnn_ops_train.so
+	sudo ldconfig
+
 
 ### (Next step is not essential since it can be defaulted in the Build later to NCCL1.3) 
 ### Do the same for NCCL: NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. Get nccl_###+cuda11.0_x86_64.txz
