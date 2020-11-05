@@ -107,7 +107,7 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 	sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 	sudo chmod a+r /usr/local/cuda/include/cudnn* /usr/local/cuda/lib64/libcudnn*
 ## Then go to /usr/local/cuda/lib64 and fix the symbolic links by doing
-        sudo rm libcudnn*.so
+	sudo rm libcudnn*.so
 	sudo rm libcudnn*.so.8
 	sudo ln libcudnn.so.8.0.4 libcudnn.so.8
 	sudo ln libcudnn_adv_infer.so.8.0.4 libcudnn_adv_infer.so.8
