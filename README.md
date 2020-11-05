@@ -66,8 +66,8 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 
 # Step 8: Go to terminal and type:
 
-	echo 'export PATH=/usr/local/cuda-11.1/bin${PATH:+:${PATH}}' >> ~/.bashrc
-	echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+	echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
+	echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
 	source ~/.bashrc
 	sudo ldconfig
 
