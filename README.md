@@ -74,7 +74,7 @@ How to install Tensorflow-gpu 1.15 with CUDA 11, cuDNN 8.0.1 with most recent nv
 ## test your graphics OKAY for nvidia FAIL for nouveau:
 	lsmod | grep nouv && echo FAIL || echo OKAY
 	lsmod | grep nvid && echo OKAY || echo FAIL
-	grep -E 'NVIDIA.*455.[20-29]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
+	grep -E 'NVIDIA.*455.[20-49]+' /proc/driver/nvidia/version &>/dev/null && echo OKAY || echo FAIL
 	nvcc -V | grep -E "V11.1.[0-9]+" &>/dev/null && echo OKAY || echo FAIL
 
 ## this should return stats for all installed cards
